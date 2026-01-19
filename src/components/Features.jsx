@@ -38,7 +38,7 @@ const ModelScroll = () => {
 				start: 'top top',
 				end: 'bottom top',
 				scrub: 1,
-        pin: true,
+				pin: true,
 			},
 		});
 
@@ -58,25 +58,22 @@ const ModelScroll = () => {
 			});
 		}
 
-    timeline
-      .call(() => setTexture('/videos/feature-1.mp4'))
-      .to('.box', { opacity: 1, y: 0, delay: 1 })
-      
-      .call(() => setTexture('/videos/feature-2.mp4'))
-      .to('.box2', { opacity: 1, y: 0 })
-      
-      .call(() => setTexture('/videos/feature-3.mp4'))
-      .to('.box3', { opacity: 1, y: 0 })
-      
-      .call(() => setTexture('/videos/feature-4.mp4'))
-      .to('.box4', { opacity: 1, y: 0 })
-      
-      .call(() => setTexture('/videos/feature-5.mp4'))
-      .to('.box5', { opacity: 1, y: 0 });
-    
+		timeline
+			.call(() => setTexture('/videos/feature-1.mp4'))
+			.to('.box1', { opacity: 1, y: 0, delay: 1 })
 
-  }, []);
-  
+			.call(() => setTexture('/videos/feature-2.mp4'))
+			.to('.box2', { opacity: 1, y: 0 })
+
+			.call(() => setTexture('/videos/feature-3.mp4'))
+			.to('.box3', { opacity: 1, y: 0 })
+
+			.call(() => setTexture('/videos/feature-4.mp4'))
+			.to('.box4', { opacity: 1, y: 0 })
+
+			.call(() => setTexture('/videos/feature-5.mp4'))
+			.to('.box5', { opacity: 1, y: 0 });
+	}, []);
 
 	return (
 		<group ref={groupRef}>
@@ -99,35 +96,32 @@ const ModelScroll = () => {
 };
 
 const Features = () => {
-	    return (
-			<section id="features">
-				<h2>See it all in a new light.</h2>
+	return (
+		<section id="features">
+			<h2>See it all in a new light.</h2>
 
-				<Canvas id="f-canvas" camera={{}}>
-					<StudioLights />
-					<ambientLight intensity={0.5} />
-					<ModelScroll />
-				</Canvas>
+			<Canvas id="f-canvas" camera={{}}>
+				<StudioLights />
+				<ambientLight intensity={0.5} />
+				<ModelScroll />
+			</Canvas>
 
-				<div className="absolute inset-0">
-					{features.map((feature, index) => (
-						<div
-							key={feature.id}
-							className={clsx(
-								'box',
-								`box${index + 1}`,
-								feature.styles,
-							)}
-						>
-							<p>
-								
-								{feature.text}
-							</p>
-						</div>
-					))}
-				</div>
-			</section>
-		);
+			<div className="absolute inset-0">
+				{features.map((feature, index) => (
+					<div
+						key={feature.id}
+						className={clsx(
+							'box',
+							`box${index + 1}`,
+							feature.styles,
+						)}
+					>
+						<p>{feature.text}</p>
+					</div>
+				))}
+			</div>
+		</section>
+	);
 };
 
 export default Features;
